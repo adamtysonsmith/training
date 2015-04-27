@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>jQuery Basics</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            .code {
+                width: 90%;
+                padding: 50px;
+                background-color: azure;
+                color: darkslategray;
+                font-family: Courier, monospace;
+                font-size: 14px;
+                font-weight: normal;
+            }
+            #event-diagnostic, #ajax-example {
+                width: 90%;
+                height: 75px;
+                padding: 50px;
+                background-color: aliceblue;
+                font-size: 20px;
+            }
+            #animated-h1 {
+                display: none;
+            }
+        </style>
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+        <h1>Welcome to jQuery</h1>
+        <p>Let's get started.</p>
+        <p>Table of Contents:</p>
+        <ol>
+            <li><a href="#patterns">Common Web Development Patterns</a></li>
+            <li><a href="#what">What is jQuery?</a></li>
+            <li><a href="#select">Selectors and Filters</a></li>
+            <li><a href="#create">Creating and Changing Page Content</a></li>
+            <li><a href="#event">Event Handling!</a></li>
+            <li><a href="#animate">Animations are a Snap</a></li>
+            <li><a href="#ajax">AJAX Made Simple</a></li>
+        </ol>
+        <br><hr><br>
+        
+        
+        <h3 id="#patterns">Common Web Development Patterns</h3>
+        <ol>
+            <li>Page load</li>
+            <li>Initialize Page State</li>
+            <li>Setup event handlers</li>
+            <li>Run App</li>
+        </ol>
+        <p>Or..</p>
+        <ol>
+            <li>User Event Occurs</li>
+            <li>Retreive Page Content</li>
+            <li>Manipulate Content</li>
+            <li>Update Page</li>
+        </ol>
+        <p>Or..</p>
+        <ol>
+            <li>Page Event Occurs (Updates Shopping Cart from user event)</li>
+            <li>Fetch Network Content (Live Content for example)</li>
+            <li>Update Page</li>
+        </ol>
+        <br><hr><br>
+        
+        
+        <h3 id="what">So, What is jQuery?</h3>
+        <ul>
+            <li>Uses CSS Syntax for performing operations</li>
+            <li>Designed to work with a set of elements</li>
+            <li>Encourages statement chaining your code</li>
+            <li>Extensible with Plugins</li>
+            <li><b>Cross-browser Compatible</b></li>
+        </ul>
+        <br><hr><br>
+        
+        
+        <h3 id="select">Selectors and Filters</h3>
+        <p>Selectors and filters provide a way of finding and extracting information from web pages.</p>
+        <h4>Selectors</h4>
+        <p>Selectors are used to select part of the web page using CSS syntax</p>
+        <p>For example, <code>$('p')</code> will select all of the p tags in a doc and return them as an array that can be further operated on.</p>
+        <br>
+        <h4>Filters</h4>
+        <p>Filters are used to further refine the results returned from selectors.</p>
+        <p>For example, <code>$('p:first')</code> will select the first paragraph in the returned set</p>
+        <br><br>
+        <div class="code">
+          <p>
+            $('document').ready(function() {<br>
+              &nbsp;// Callback function on ready<br>
+              &nbsp;// You can target by id, class or element<br>
+              &nbsp;$('code').css('background-color','aquamarine');<br>
+              <br>
+              &nbsp;// You can use advanced CSS selectors and mix in filtering<br>
+              &nbsp;$('ul > li:first').css('color','orange');<br>
+              <br>
+              &nbsp;// Or filter out a class<br>
+              &nbsp;$('div:not(.class)').css('color','orange');<br>
+            });
+          </p>
+        </div>
+        <br><hr><br>
+        
+        
+        <h3 id="create">Creating and Changing Page Content</h3>
+        <div id="example"></div>
+                <div class="code">
+          <p>
+            $('document').ready(function() {<br>
+              &nbsp;// Create some new content<br>
+              &nbsp;// Notice that html() closes the &lt;p> tag for you in output<br>
+              <br>
+              &nbsp;var newParagraph = $('&lt;p>');<br>
+              &nbsp;newParagraph.append('Hey this is a string, added via jQuery.');<br>
+              &nbsp;$('#example').html(newParagraph);<br>
+              <br>
+              &nbsp;// Insert some content in the same tag using prepend() or append()<br>
+              &nbsp;$('#create').append(' - I just appended this text!');<br>
+              <br>
+              &nbsp;// Change existing content using html()<br>
+              &nbsp;$('#what').html('Why is jQuery Awesome?');<br>
+            });
+          </p>
+        </div>
+        <br><hr><br>
+        
+        
+        <h3 id="event">Event Handling with jQuery</h3>
+        <p>jQuery normalizes an event structure across browers and provides cross-browser consistency for properties such as the event name, the page coordinates of the mouse, the element where the event originated along with many other elements related to the event, and information such as whether a meta-key or specific mouse button was pressed.</p>
+        <div id="event-diagnostic"><h3>Mouse over me, go ahead.</h3></div>
+        <div class="code">
+            // Event Handling Code<br>
+            // We use the on() method with some custom callback functions<br>
+            // The events are triggered only on the targeted element<br>
+            $('#event-diagnostic').on('mousemove', onMouseOver);<br>
+            $('#event-diagnostic').on('click', onMouseClick);<br>
+            $('#event-diagnostic').on('mouseleave', onMouseLeave);<br>
+            <br>
+            // We pass our callback functions the evt param, jQuery's cross browser event object<br>
+            function onMouseOver(evt) {<br>
+                $('#event-diagnostic').text('Mouse over fired.');<br>
+            }<br>
+            function onMouseClick(evt) {<br>
+                $('#event-diagnostic').text('Mouse click fired.');<br>
+            }<br>
+            function onMouseLeave(evt) {<br>
+                $('#event-diagnostic').text('Mouse leave fired.');<br>
+            }
+        </div>
+        <br><hr><br>
+        
+        
+        <h3 id="animate">Animations like Whaaat</h3>
+        <p>Are you ready to be mind blown? Click the button.. do it.</p>
+        <h1 id="animated-h1">Holy Moly Mackerel!</h1>
+        <button id="animation-button">Click to Fire Animation</button>
+        <br><hr><br>
+        
+        
+        <h3 id="ajax">AJAX Made Simple.</h3>
+        <p>One of jQuery's greatest strengths is how it simplifies working with AJAX.  jQuery provides high-level wrapper functions for retreiving data, working with different data types, handling errors, and monitoring the AJAX request process.</p>
+        <p>You must either be using a development server for AJAX, or use Brackets Live Editor.</p>
+        <ul>
+            <li><code>ajax()</code> is used to perform generic AJAX requests</li>
+            <li><code>load()</code> is used to load AJAX content directly into a page element</li>
+        </ul>
+        <div id="ajax-example"></div>
+        <button id="getTextButton">Get Text</button> <button id="loadHTMLButton">Load HTML</button>
+    </body>
+</html>
