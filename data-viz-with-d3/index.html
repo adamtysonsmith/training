@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Data Visualization with D3.js Training</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/skeleton.css" />
+        <script src="lib/d3.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+          <div class="row">
+            <div class="twelve columns">
+                <h2>Welcome to Data Visualization with D3.js</h2>
+                <p>Let's get started!  This training code consists of my personal notes and practice from the Lynda.com course, <a href="http://www.lynda.com/sdk/D3js-tutorials/Data-Visualization-D3js/162449-2.html">Data Visualization with D3.js</a> with Ray Villalobos.</p>
+            </div> <!-- End 12 Columns -->
+          </div> <!-- End Row -->
+          <!-- Selecting and Manipulating Elements -->
+          <div class="row">
+            <div class="twelve columns">
+                <h3>Selecting and Manipulating Elements</h3>
+                <p>Reference the code in the select.js file</p>
+                <div id="elements">
+                    <div class="item">Aluminum</div>
+                    <div class="item">Hydrogen</div>
+                    <div class="item">Neptunium</div>
+                    <div class="item">Mercury</div>
+                    <div class="item">Krypton</div>
+                </div>
+            </div> <!-- End 12 Columns -->
+          </div> <!-- End Row -->
+          <!-- Binding Data to Elements -->
+          <div class="row">
+            <div class="twelve columns">
+                <h3>Binding Data to Elements</h3>
+                <p>Reference the code in the data-binding.js file</p>
+                <div id="fruits"></div>
+            </div> <!-- End 12 Columns -->
+          </div> <!-- End Row -->
+          <!-- Working with SVG Shapes -->
+          <div class="row">
+            <div class="twelve columns">
+                <h3>Working with SVG Shapes</h3>
+                <p>Straight up SVG, yo.</p>
+                <svg width="600" height="400" style="background: #93A1A1">
+                    <rect x="250"
+                          y="280"
+                          width="100"
+                          height="100"
+                          style="fill: #C61C6F" />
+                    <circle cx="200"
+                            cy="150"
+                            r="50"
+                            style="fill: #840043" />
+                    <text x="170"
+                          y="160"
+                          font-family="sans-serif"
+                          font-size="22"
+                          fill="white">SVG shapes written manually in HTML</text>
+                    <!-- The g tag specifies a group, which can be used later -->
+                    <g id="triangle">
+                        <polyline points="400 30, 350 120, 300 30"
+                              style="fill: #F7B330" />
+                    </g>
+                    <!-- xlink draws from the triangle's starting coordinates -->
+                    <use xlink:href="#triangle"
+                         x="-200"
+                         y="200" />
+                </svg>
+                <!-- Now we will draw SVG shapes using D3 -->
+                <div id="svg-in-d3"></div>
+            </div> <!-- End 12 Columns -->
+          </div> <!-- End Row -->
+          <!-- Creating Real Charts in D3 -->
+          <div class="row">
+            <div class="twelve columns">
+                <h3>Creating a Bar Chart in D3</h3>
+                <p>Reference the code in the chart.js file.  The topics covered in this chart include:</p>
+                <ul>
+                  <li>Quanitative and Ordinal Scales</li>
+                  <li>Using Scales with Color to Create Meaningful Representations</li>
+                  <li>Axes and Margins</li>
+                  <li>Chart Animations</li>
+                </ul>
+                <div id="chart"></div>
+            </div> <!-- End 12 Columns -->
+          </div> <!-- End Row -->
+        </div> <!-- End Container -->
+    </body>
+     
+    <!-- IMPORTANT: Load your D3 Script before closing html,
+     it will not work if loading Script in the Head.
+     The D3.js Library can be loaded in the Head.-->
+     <script src="select.js"></script>
+     <script src="data-bind.js"></script>  
+     <script src="svg.js"></script>
+     <script src="chart.js"></script> 
+</html>
